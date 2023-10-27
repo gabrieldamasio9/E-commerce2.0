@@ -1,3 +1,5 @@
+import { catalogo } from "./utilidades";
+
 function abrirCarrinho () {
 
     document.getElementById("carrinho").classList.add("right-[0]");
@@ -19,18 +21,20 @@ export function inicializarCarrinho() {
     botaoAbrirCarrinho.addEventListener("click", abrirCarrinho);
 }
 
-export function adicionarAoCarrinho (){
-    const conteinerProdutosCarrinho = document.getElementById("produto-carrinho");
+export function adicionarAoCarrinho (idProduto){
+    const produto = catalogo.find((p) => p.id === idProduto);
+    const conteinerProdutosCarrinho = 
+    document.getElementById("produto-carrinho");
     const cartaoProdutoCarrinho =            `<article class="flex  bg-slate-100 rounded-lg p-2 relative ">
 
     <button id="fechar-carrinho" class="absolute top-1 right-2" ><i class="fa-solid fa-circle-xmark text-slate-500 hover:text-slate-800" ></i></button>
-    <img src="./product-1.png" alt="Maquina de corte Magic clip adicionado " class="h-20 rounded-lg ">
+    <img src="./${produto.Imagem}" alt="Maquina de corte Magic clip adicionado: ${produto.nome} " class="h-20 rounded-lg ">
     
     
 <div class="mx-1">    
-<p class="text-slate-900 text-sm" > Maquina de Corte Wahl</p>
+<p class="text-slate-900 text-sm" > ${produto.nome}</p>
     <p class="text-slate-400 text-xs">Modelo: Magic Clip cordless</p>
-        <p class="text-green-500 ">R$ 600,00</p>
+        <p class="text-green-500 ">$${produto.preco}</p>
 </div>
 
 </article>`;
