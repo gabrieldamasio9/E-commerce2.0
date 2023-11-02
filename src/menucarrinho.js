@@ -54,10 +54,21 @@ export function adicionarAoCarrinho(idProduto){
     document.getElementById("produto-carrinho");
     
     
+    const elementoArticle = document.createElement('article');
+   const articleClasses = [
+    'flex',
+     'bg-slate-100',
+      'rounded-lg',
+       'p-2',
+        'relative',
+    ];
     
-    const cartaoProdutoCarrinho =            `<article class="flex  bg-slate-100 rounded-lg p-2 relative ">
 
-    <button id="fechar-carrinho" class="absolute top-1 right-2" ><i class="fa-solid fa-circle-xmark text-slate-500 hover:text-slate-800" ></i></button>
+    for(const articleClass of articleClasses){
+        elementoArticle.classList.add(articleClass);
+    }
+
+    const cartaoProdutoCarrinho =            `<button id="fechar-carrinho" class="absolute top-1 right-2" ><i class="fa-solid fa-circle-xmark text-slate-500 hover:text-slate-800" ></i></button>
     <img src="./${produto.Imagem}" alt="Maquina de corte Magic clip adicionado: ${produto.nome} " class="h-20 rounded-lg ">
     
     
@@ -71,9 +82,7 @@ export function adicionarAoCarrinho(idProduto){
     <button id="decrementar-produto-${produto.id}">-</button>
     <p id='quantidade-${produto.id}'  class="ml-2">${idsProdutoCarrinhoComQuantidade[produto.id]}</p>
     <button  id="incrementar-produto-${produto.id}" class="ml-2">+</button>
-</div>
-
-</article>`;
+</div>`;
 conteinerProdutosCarrinho.innerHTML += cartaoProdutoCarrinho;
 
 document
